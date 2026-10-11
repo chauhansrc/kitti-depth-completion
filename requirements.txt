@@ -1,0 +1,7 @@
+# torch / torchvision are preinstalled on Colab; versions >= 2.1 / 0.16 are expected.
+torch>=2.1
+torchvision>=0.16
+numpy
+pillow
+matplotlib
+tqdm

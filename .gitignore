@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Data and training outputs (large; keep out of git)
+data/
+depth_selection/
+*.zip
+runs/
+*.pt
+*.pth
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
