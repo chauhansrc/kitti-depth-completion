@@ -44,7 +44,26 @@ It uses no learning and no camera.
 other metric, by more than 2× on MAE. RMSE punishes large errors, and the network avoids the baseline's
 big mistakes at object edges and in large gaps. Its typical per-pixel error, however, is much worse.
 
+**Best validation frame** (RMSE 1224 mm). Rows from top: RGB, sparse LiDAR input (dilated for
+visibility), prediction, semi-dense ground truth, absolute error on GT pixels (0–5 m):
+
+![Best validation frame](docs/images/example_best.jpg)
+
+<details>
+<summary><b>Worst validation frame</b> (RMSE 3188 mm)</summary>
+
+![Worst validation frame](docs/images/example_worst.jpg)
+
+</details>
+
+![Validation RMSE during training](docs/images/training_curve.png)
+
+The model passes the baseline's RMSE around epoch 15. Validation RMSE was still slowly improving at
+epoch 30.
+
 ### Error vs. true depth
+
+![RMSE and MAE by true depth](docs/images/error_by_depth.png)
 
 | Depth (m) | % of GT pixels | Model RMSE | Model MAE | NN RMSE | NN MAE |
 |---|---|---|---|---|---|
@@ -75,6 +94,8 @@ passing its input depth through to the output**, and this one problem explains m
 
 LiDAR points were randomly removed at test time. The model was trained only on full-density LiDAR.
 
+![RMSE as LiDAR points are removed](docs/images/lidar_sparsity.png)
+
 | LiDAR kept | Model RMSE | NN RMSE |
 |---|---|---|
 | 100% | 1961 | 2273 |
@@ -90,7 +111,6 @@ training.
 - **Per drive:** RMSE is 1748–2451 mm across the 4 validation drives. The model beats the baseline's
   RMSE on all four. The hardest drive is `2011_09_28_drive_0037` (RMSE 2451 mm, δ<1.25 0.896).
 - **Speed (L4, fp16, 352×1216):** 52 ms per frame at batch 1 (19 fps), using 0.7 GB of GPU memory.
-- **Training curve:** validation RMSE was still improving at epoch 30.
 
 ### Likely improvements
 
