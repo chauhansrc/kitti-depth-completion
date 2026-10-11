@@ -32,7 +32,9 @@ The full benchmark trains on ~86k frames, so absolute numbers here will be worse
 2. In Colab: File → Open notebook → GitHub tab → pick `colab_train.ipynb` from your repo. Choose a T4 GPU runtime.
 3. Set `REPO_URL` in the setup cell. The code is cloned to `/content/kitti-code`, and results go to
    `MyDrive/kitti-runs` on Google Drive so they survive runtime resets.
-4. Run the cells in order: download → train `rgbd` → optional `d` / `rgb` ablations → evaluate → compare.
+4. Run all cells with `QUICK_TEST = True` first. This is a ~3 min smoke test of the whole pipeline.
+   Then set it to `False` and run again for the real training run, which also does a basic evaluation.
+   Training resumes from `last.pt` automatically if Colab disconnects.
 
 After changing code locally, push and re-run the setup cell; it runs `git pull` on the existing clone.
 
