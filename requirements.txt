@@ -5,3 +5,5 @@ numpy
 pillow
 matplotlib
 tqdm
+scipy
+pandas
